@@ -22,7 +22,8 @@ public class ApunteFormActivity extends AppCompatActivity implements View.OnClic
         Intent intent = getIntent();
         int index = intent.getIntExtra("index", -1);
         if(index >= 0){
-            Apunte apunte = ApunteDAO.all.get(index);
+            ApunteDAO apunteDAO = new ApunteDAO(this);
+            Apunte apunte = apunteDAO.all().get(index);
             TextView txtTitulo = (TextView) findViewById(R.id.txtTitulo);
             TextView txtEtiquetas = (TextView) findViewById(R.id.txtEtiquetas);
             TextView txtContenido= (TextView) findViewById(R.id.txtContenido);
@@ -44,7 +45,8 @@ public class ApunteFormActivity extends AppCompatActivity implements View.OnClic
         apunte.setTitulo(txtTitulo.getText().toString());
         apunte.setEtiquetas(txtEtiquetas.getText().toString());
         apunte.setContenido(txtContenido.getText().toString());
-        ApunteDAO.save(apunte);
+        ApunteDAO apunteDAO = new ApunteDAO(this);
+        apunteDAO.save(apunte);
         finish();
     }
 }

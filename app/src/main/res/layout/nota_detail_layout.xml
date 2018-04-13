@@ -7,7 +7,35 @@
         android:id="@+id/txtTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:layout_alignLeft="@+id/txtResumen"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/txtResumen"
+        android:layout_marginLeft="13dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="14dp"
+        android:text="Titulo"
+        android:textColor="@android:color/background_dark"
         android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/txtResumen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtTitulo"
+        android:layout_marginTop="13dp"
+        android:text="Resumen"
+        android:textColor="@color/colorPrimary"
+        android:translationX="12dp" />
+
+    <TextView
+        android:id="@+id/txtEtiquetas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txtResumen"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="13dp"
+        android:text="Etiquetas" />
 
 </RelativeLayout>

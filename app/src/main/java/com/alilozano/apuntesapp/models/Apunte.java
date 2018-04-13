@@ -9,6 +9,15 @@ public class Apunte {
     private String contenido;
     private String etiquetas;
 
+    public Apunte() {
+    }
+
+    public Apunte(String titulo, String contenido, String etiquetas) {
+        this.titulo = titulo;
+        this.contenido = contenido;
+        this.etiquetas = etiquetas;
+    }
+
     public String getTitulo() {
         return titulo;
     }

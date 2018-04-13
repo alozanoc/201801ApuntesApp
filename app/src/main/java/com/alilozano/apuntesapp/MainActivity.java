@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alilozano.apuntesapp.adapters.ApunteAdapter;
 import com.alilozano.apuntesapp.daos.ApunteDAO;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -25,10 +26,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button button = (Button) findViewById(R.id.btnNuevoApunte);
 
         button.setOnClickListener(this);
-        ArrayAdapter adapter = new ArrayAdapter(this,
-                R.layout.nota_detail_layout,
-                R.id.txtTitulo,
-                ApunteDAO.all);
+        ApunteDAO apunteDAO = new ApunteDAO(this);
+        ApunteAdapter adapter = new ApunteAdapter(this, apunteDAO.all());
         ListView listView = (ListView) findViewById(R.id.listViewApuntes);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -39,17 +38,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
             }
         });
-
-
     }
-
-
     @Override
     protected void onResume() {
         super.onResume();
         ListView listView = (ListView) findViewById(R.id.listViewApuntes);
         ArrayAdapter adapter = (ArrayAdapter)listView.getAdapter();
+        adapter.clear();
+        adapter.addAll(new ApunteDAO(this).all());
         adapter.notifyDataSetChanged();
+
     }
 
     @Override
