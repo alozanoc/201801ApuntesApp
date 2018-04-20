@@ -5,9 +5,12 @@ package com.alilozano.apuntesapp.models;
  */
 
 public class Apunte {
+    private int id = -1;
     private String titulo;
     private String contenido;
     private String etiquetas;
+    private boolean estrella = false;
+    private boolean fijo = false;
 
     public Apunte() {
     }
@@ -16,6 +19,30 @@ public class Apunte {
         this.titulo = titulo;
         this.contenido = contenido;
         this.etiquetas = etiquetas;
+    }
+
+    public boolean isEstrella() {
+        return estrella;
+    }
+
+    public void setEstrella(boolean estrella) {
+        this.estrella = estrella;
+    }
+
+    public boolean isFijo() {
+        return fijo;
+    }
+
+    public void setFijo(boolean fijo) {
+        this.fijo = fijo;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitulo() {

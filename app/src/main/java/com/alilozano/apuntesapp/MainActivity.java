@@ -30,14 +30,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ApunteAdapter adapter = new ApunteAdapter(this, apunteDAO.all());
         ListView listView = (ListView) findViewById(R.id.listViewApuntes);
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(getBaseContext(), ApunteFormActivity.class);
                 intent.putExtra("index", i);
                 startActivity(intent);
             }
-        });
+        });*/
     }
     @Override
     protected void onResume() {

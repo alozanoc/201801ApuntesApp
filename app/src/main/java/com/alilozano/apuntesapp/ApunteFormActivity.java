@@ -3,6 +3,7 @@ package com.alilozano.apuntesapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -20,10 +21,10 @@ public class ApunteFormActivity extends AppCompatActivity implements View.OnClic
         btnGuardar.setOnClickListener(this);
 
         Intent intent = getIntent();
-        int index = intent.getIntExtra("index", -1);
-        if(index >= 0){
+        int id = intent.getIntExtra("id", -1);
+        if(id >= 0){
             ApunteDAO apunteDAO = new ApunteDAO(this);
-            Apunte apunte = apunteDAO.all().get(index);
+            Apunte apunte = apunteDAO.get(id);
             TextView txtTitulo = (TextView) findViewById(R.id.txtTitulo);
             TextView txtEtiquetas = (TextView) findViewById(R.id.txtEtiquetas);
             TextView txtContenido= (TextView) findViewById(R.id.txtContenido);
@@ -38,15 +39,19 @@ public class ApunteFormActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View view) {
+        int id = getIntent().getIntExtra("id", -1);
+
         TextView txtTitulo = (TextView) findViewById(R.id.txtTitulo);
         TextView txtEtiquetas = (TextView) findViewById(R.id.txtEtiquetas);
         TextView txtContenido= (TextView) findViewById(R.id.txtContenido);
         Apunte apunte = new Apunte();
+        apunte.setId(id);
         apunte.setTitulo(txtTitulo.getText().toString());
         apunte.setEtiquetas(txtEtiquetas.getText().toString());
         apunte.setContenido(txtContenido.getText().toString());
         ApunteDAO apunteDAO = new ApunteDAO(this);
         apunteDAO.save(apunte);
+        Log.d("PROSOR", "Guardando.. ");
         finish();
     }
 }
